@@ -25,5 +25,6 @@ Route.group(() => {
     Route.put('/:id', 'UsersController.update')
     Route.delete('/:id', 'UsersController.delete')
   }).prefix('/users')
-}).prefix('/api/v1')
-//   .middleware('auth')
+})
+  .prefix('/api/v1')
+  .middleware('auth')
