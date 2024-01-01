@@ -2,7 +2,7 @@ import Users from 'App/Models/User'
 import slugify from 'slugify'
 import Factory from '@ioc:Adonis/Lucid/Factory'
 
-export default Factory.define(Users, ({ faker }) => {
+export const UserFactory = Factory.define(Users, ({ faker }) => {
   const name = faker.person.fullName()
   const generatedUsername = slugify(name, { lower: true })
 
@@ -12,6 +12,6 @@ export default Factory.define(Users, ({ faker }) => {
     email: faker.internet.email(),
     password: faker.internet.password(),
     phone_number: faker.phone.number(),
-    location: faker.address.streetAddress(),
+    location: faker.location.streetAddress(),
   }
 }).build()
