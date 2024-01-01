@@ -2,7 +2,7 @@ import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
 
-export default class Authentication extends BaseModel {
+export default class ApiToken extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
@@ -22,9 +22,9 @@ export default class Authentication extends BaseModel {
   public updatedAt: DateTime
 
   @beforeSave()
-  public static async hashPassword (authentication: Authentication) {
-    if (authentication.$dirty.password) {
-      authentication.password = await Hash.make(authentication.password)
+  public static async hashPassword (apiToken: ApiToken) {
+    if (apiToken.$dirty.password) {
+      apiToken.password = await Hash.make(apiToken.password)
     }
   }
 }

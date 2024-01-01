@@ -15,6 +15,17 @@ Route.get('/', async () => {
 Route.group(() => {
   /**
    * ============================================
+   * Authentication
+   * ============================================
+   */
+  Route.group(() => {
+    Route.post('/register', 'AuthenticationController.register')
+    Route.post('/login', 'AuthenticationController.login')
+    Route.post('/forgot-password', 'AuthenticationController.forgotPassword')
+    Route.post('/reset-password', 'AuthenticationController.resetPassword')
+  }).prefix('/auth')
+  /**
+   * ============================================
    * Users
    * ============================================
    */
@@ -24,7 +35,7 @@ Route.group(() => {
     Route.get('/slug/:slug', 'UsersController.showByUsername')
     Route.put('/:id', 'UsersController.update')
     Route.delete('/:id', 'UsersController.delete')
-  }).prefix('/users')
-})
-  .prefix('/api/v1')
-  .middleware('auth')
+  })
+    .prefix('/users')
+    .middleware('auth')
+}).prefix('/api/v1')
