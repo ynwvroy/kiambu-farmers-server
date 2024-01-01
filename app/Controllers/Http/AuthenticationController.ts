@@ -1,43 +1,80 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { rules, schema } from '@ioc:Adonis/Core/Validator'
+
 import User from 'App/Models/User'
 
+/**
+ * Resourceful controller for interacting with authentication
+ *
+ * @export
+ * @class AuthenticationController
+ */
 export default class AuthenticationController {
   /**
-   * ============================================
-   * Register new user
-   * ============================================
+   * Query and retrieve a user's profile
+   *
+   * @param {HttpContextContract} {auth, response}
+   * @return {*}
+   * @memberof AuthenticationController
    */
-  public async register({ request, response }: HttpContextContract) {
+  public async user({ auth, response }: HttpContextContract) {
     try {
-      const registerSchema = schema.create({
-        full_name: schema.string(),
-        username: schema.string(),
-        phone_number: schema.string(),
-        email: schema.string({}, [rules.email()]),
-        password: schema.string(),
-        location: schema.string(),
+      await auth.use('api').authenticate()
+
+      response.status(200).json({
+        success: true,
+        message: 'Successfully retrieved the logged in user profile',
+        data: auth.use('api').user,
       })
+    } catch (error) {
+      response.status(500).json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
 
-      const payload = await request.validate({ schema: registerSchema })
-      const user = await User.create(payload)
-      await user.refresh()
+  public async index({ response }: HttpContextContract) {
+    try {
+      const users = await User.query().select('*').from('users').preload('organization')
+      return response.json({
+        success: true,
+        message: 'Users retrieved successfully',
+        data: users,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
 
+  /**
+   * Display a single user
+   * GET /users/:id
+   *
+   * @param  {Object} { request, response }: HttpContextContract
+   * @return {[type]}    [description]
+   */
+  public async show({ params, response }: HttpContextContract) {
+    try {
+      const user = await User.find(params.id)
+      if (!user) {
+        return response.status(404).json({
+          success: false,
+          message: 'User not found',
+          data: null,
+        })
+      }
       return response.status(200).json({
         success: true,
-        message: 'Account created successfully',
+        message: 'Successfully retrieved the user',
         data: user,
       })
     } catch (error) {
-      if (error.code === 'ER_DUP_ENTRY') {
-        // Duplicate entry error
-        return response.status(400).json({
-          success: false,
-          message: 'Email or username or phone number or username already exists.',
-          data: null,
-          code: 'ER_DUP_ENTRY',
-        })
-      }
       response.status(500).json({
         success: false,
         message: error.message,
@@ -47,9 +84,10 @@ export default class AuthenticationController {
   }
 
   /**
-   * ============================================
-   * Login
-   * ============================================
+   * Authenticate an existing user
+   *
+   * @param {HttpContextContract} {auth, request, response}
+   * @memberof AuthenticationController
    */
   public async login({ auth, request, response }: HttpContextContract) {
     try {
@@ -85,9 +123,59 @@ export default class AuthenticationController {
   }
 
   /**
-   * ============================================
-   * Forgot password
-   * ============================================
+   * Create A New User
+   *
+   * @param {HttpContextContract} {request, response}
+   * @return {*}
+   * @memberof AuthenticationController
+   */
+  public async register({ request, response }: HttpContextContract) {
+    try {
+      const registerSchema = schema.create({
+        full_name: schema.string(),
+        username: schema.string(),
+        phone_number: schema.string(),
+        email: schema.string({}, [rules.email()]),
+        password: schema.string(),
+        user_type: schema.string(),
+        profile_url: schema.string.optional(), // Use .optional() to make it nullable
+        organization_id: schema.number.optional(),
+        is_verified: schema.boolean(),
+      })
+
+      const payload = await request.validate({ schema: registerSchema })
+      const user = await User.create(payload)
+      await user.refresh()
+
+      return response.status(200).json({
+        success: true,
+        message: 'Account created successfully',
+        data: user,
+      })
+    } catch (error) {
+      if (error.code === 'ER_DUP_ENTRY') {
+        // Duplicate entry error
+        return response.status(400).json({
+          success: false,
+          message: 'Email or username or phone number already exists.',
+          data: null,
+          code: 'ER_DUP_ENTRY',
+        })
+      }
+      response.status(500).json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
+  /**
+   * Send a password reset mail
+   *
+   * @param {HttpContextContract} {request, response}
+   * @return {*}
+   * @memberof AuthenticationController
    */
   public async forgotPassword({ request, response }: HttpContextContract) {
     try {
@@ -131,9 +219,11 @@ export default class AuthenticationController {
   }
 
   /**
-   * ============================================
-   * Reset password
-   * ============================================
+   * Reset User's Password
+   *
+   * @param {HttpContextContract} {request, response, auth}
+   * @return {*}
+   * @memberof AuthenticationController
    */
   public async resetPassword({ request, response, auth }: HttpContextContract) {
     try {

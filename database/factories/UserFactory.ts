@@ -1,17 +1,18 @@
-import Users from 'App/Models/User'
-import slugify from 'slugify'
 import Factory from '@ioc:Adonis/Lucid/Factory'
+import User from 'App/Models/User'
+import { OrganizationsFactory } from './OrganizationsFactory'
 
-export const UserFactory = Factory.define(Users, ({ faker }) => {
-  const name = faker.person.fullName()
-  const generatedUsername = slugify(name, { lower: true })
-
+export const UserFactory = Factory.define(User, ({ faker }) => {
   return {
-    full_name: name,
-    username: generatedUsername,
+    full_name: faker.person.fullName(),
+    username: faker.internet.userName(),
     email: faker.internet.email(),
-    password: faker.internet.password(),
     phone_number: faker.phone.number(),
-    location: faker.location.streetAddress(),
+    password: faker.internet.password(),
+    user_type: faker.helpers.arrayElement(['super_admin', 'user', 'event_organizer']),
+    profile_url: faker.image.urlLoremFlickr({ category: 'abstract' }),
+    is_verified: faker.datatype.boolean(),
   }
-}).build()
+})
+  .relation('organization', () => OrganizationsFactory)
+  .build()

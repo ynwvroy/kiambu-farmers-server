@@ -1,6 +1,5 @@
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { AuthenticationException } from '@adonisjs/auth/build/standalone'
-import type { GuardsList } from '@ioc:Adonis/Addons/Auth'
-import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 /**
  * Auth middleware is meant to restrict un-authenticated access to a given route
@@ -13,7 +12,7 @@ export default class AuthMiddleware {
   /**
    * The URL to redirect to when request is Unauthorized
    */
-  protected redirectTo = '/'
+  protected redirectTo = '/login'
 
   /**
    * Authenticates the current HTTP request against a custom set of defined
@@ -23,7 +22,7 @@ export default class AuthMiddleware {
    * of the mentioned guards and that guard will be used by the rest of the code
    * during the current request.
    */
-  protected async authenticate(auth: HttpContextContract['auth'], guards: (keyof GuardsList)[]) {
+  protected async authenticate(auth: HttpContextContract['auth'], guards: any[]) {
     /**
      * Hold reference to the guard last attempted within the for loop. We pass
      * the reference of the guard to the "AuthenticationException", so that
@@ -63,7 +62,7 @@ export default class AuthMiddleware {
   public async handle(
     { auth }: HttpContextContract,
     next: () => Promise<void>,
-    customGuards: (keyof GuardsList)[]
+    customGuards: string[]
   ) {
     /**
      * Uses the user defined guards or the default guard mentioned in

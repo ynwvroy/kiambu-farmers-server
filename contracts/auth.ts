@@ -5,8 +5,6 @@
  * file.
  */
 
-import ApiToken from 'App/Models/ApiToken'
-
 declare module '@ioc:Adonis/Addons/Auth' {
   /*
   |--------------------------------------------------------------------------
@@ -26,16 +24,16 @@ declare module '@ioc:Adonis/Addons/Auth' {
     | User Provider
     |--------------------------------------------------------------------------
     |
-    | The following provider uses Lucid models as a driver for fetching user
-    | details from the database for authentication.
+    | The following provider directlly uses Database query builder for fetching
+    | user details from the database for authentication.
     |
     | You can create multiple providers using the same underlying driver with
-    | different Lucid models.
+    | different database tables.
     |
     */
     user: {
-      implementation: LucidProviderContract<typeof ApiToken>
-      config: LucidProviderConfig<typeof ApiToken>
+      implementation: DatabaseProviderContract<DatabaseProviderRow>
+      config: DatabaseProviderConfig
     }
   }
 
@@ -67,7 +65,6 @@ declare module '@ioc:Adonis/Addons/Auth' {
     api: {
       implementation: OATGuardContract<'user', 'api'>
       config: OATGuardConfig<'user'>
-      client: OATClientContract<'user'>
     }
   }
 }
