@@ -11,3 +11,19 @@ Route.get('/health', async ({ response }) => {
 Route.get('/', async () => {
   return 'App running 🚀'
 })
+
+Route.group(() => {
+  /**
+   * ============================================
+   * Users
+   * ============================================
+   */
+  Route.group(() => {
+    Route.get('/', 'UsersController.index')
+    Route.get('/:id', 'UsersController.showById')
+    Route.get('/slug/:slug', 'UsersController.showByUsername')
+    Route.put('/:id', 'UsersController.update')
+    Route.delete('/:id', 'UsersController.delete')
+  }).prefix('/users')
+}).prefix('/api/v1')
+//   .middleware('auth')
