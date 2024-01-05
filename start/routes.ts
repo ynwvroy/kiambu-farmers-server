@@ -161,5 +161,6 @@ Route.group(() => {
     Route.put('/:id', 'OrdersController.update')
     Route.delete('/:id', 'OrdersController.delete')
   }).prefix('/order')
-}).prefix('/api/v1')
-// .middleware('auth')
+})
+  .prefix('/api/v1')
+  .middleware('auth')
