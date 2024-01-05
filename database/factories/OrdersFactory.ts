@@ -1,7 +1,7 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
-import Careers from 'App/Models/Careers'
+import Orders from 'App/Models/Orders'
 
-export const CareersFactory = Factory.define(Careers, ({ faker }) => {
+export const OrdersFactory = Factory.define(Orders, ({ faker }) => {
   return {
     full_name: faker.internet.displayName(),
     email: faker.internet.email(),

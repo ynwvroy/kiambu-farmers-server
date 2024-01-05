@@ -151,16 +151,16 @@ Route.group(() => {
 
   /**
    * ============================================
-   * Careers Application
+   * Orders Application
    * ============================================
    */
   Route.group(() => {
-    Route.get('/', 'CareersController.index')
-    Route.get('/:id', 'CareersController.show')
-    Route.post('/', 'CareersController.store')
-    Route.put('/:id', 'CareersController.update')
-    Route.delete('/:id', 'CareersController.delete')
-  }).prefix('/career-application')
+    Route.get('/', 'OrdersController.index')
+    Route.get('/:id', 'OrdersController.show')
+    Route.post('/', 'OrdersController.store')
+    Route.put('/:id', 'OrdersController.update')
+    Route.delete('/:id', 'OrdersController.delete')
+  }).prefix('/order')
 })
   .prefix('/api/v1')
   .middleware('auth')
