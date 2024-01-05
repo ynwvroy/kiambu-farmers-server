@@ -1,8 +1,8 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import { MailListFactory } from 'Database/factories/MailListFactory'
+import { ProductFactory } from 'Database/factories/ProductFactory'
 
 export default class UserSeeder extends BaseSeeder {
   public async run() {
-    await MailListFactory.createMany(10)
+    await ProductFactory.createMany(10)
   }
 }

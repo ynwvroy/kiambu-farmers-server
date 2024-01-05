@@ -125,16 +125,16 @@ Route.group(() => {
 
   /**
    * ============================================
-   * Mailing List
+   * Product List
    * ============================================
    */
   Route.group(() => {
-    Route.get('/', 'MailListController.index')
-    Route.post('/', 'MailListController.store')
-    Route.get('/:id', 'MailListController.show')
-    Route.put('/:id', 'MailListController.update')
-    Route.delete('/:id', 'MailListController.delete')
-  }).prefix('/mail-list')
+    Route.get('/', 'ProductController.index')
+    Route.post('/', 'ProductController.store')
+    Route.get('/:id', 'ProductController.show')
+    Route.put('/:id', 'ProductController.update')
+    Route.delete('/:id', 'ProductController.delete')
+  }).prefix('/product')
 
   /**
    * ============================================

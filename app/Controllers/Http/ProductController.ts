@@ -1,14 +1,14 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import MailList from '../../Models/MailList'
+import Product from '../../Models/Product'
 
-export default class MailListController {
+export default class ProductController {
   public async index({ response }: HttpContextContract) {
     try {
-      const mailList = await MailList.query().select('*').from('mail_lists')
+      const product = await Product.query().select('*').from('mail_lists')
       return response.json({
         success: true,
-        message: 'MailLists retrieved successfully',
-        data: mailList,
+        message: 'Products retrieved successfully',
+        data: product,
       })
     } catch (error) {
       return response.json({
@@ -21,17 +21,17 @@ export default class MailListController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const mailList = await MailList.find(params.id)
-      if (mailList) {
+      const product = await Product.find(params.id)
+      if (product) {
         return response.json({
           success: true,
-          message: 'Mail record retrieved successfully',
-          data: mailList,
+          message: 'Product record retrieved successfully',
+          data: product,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Mail record not found',
+          message: 'Product record not found',
           data: null,
         })
       }
@@ -47,11 +47,11 @@ export default class MailListController {
   public async store({ request, response }: HttpContextContract) {
     try {
       const data = request.all()
-      const mailList = await MailList.create(data)
+      const product = await Product.create(data)
       return response.json({
         success: true,
-        message: 'Added to mail-list successfully',
-        data: mailList,
+        message: 'Product created successfully',
+        data: product,
       })
     } catch (error) {
       return response.json({
@@ -64,21 +64,21 @@ export default class MailListController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const mailList = await MailList.findOrFail(params.id)
-      if (!mailList) {
+      const product = await Product.findOrFail(params.id)
+      if (!product) {
         return response.json({
           success: true,
-          message: 'Mail record not found',
+          message: 'Product record not found',
           data: null,
         })
       } else {
-        mailList.merge(request.all())
+        product.merge(request.all())
 
-        await mailList.save()
+        await product.save()
         return response.json({
           success: true,
-          message: 'Mail record updated successfully',
-          data: mailList,
+          message: 'Product record updated successfully',
+          data: product,
         })
       }
     } catch (error) {
@@ -92,19 +92,19 @@ export default class MailListController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const mailList = await MailList.findOrFail(params.id)
-      await mailList.delete()
+      const product = await Product.findOrFail(params.id)
+      await product.delete()
 
       return response.json({
         success: true,
-        message: 'Successfully deleted the mail record',
+        message: 'Successfully deleted the product',
         data: null,
       })
     } catch (error) {
       if (error.code === 'E_ROW_NOT_FOUND') {
         return response.status(400).json({
           success: false,
-          message: 'The mail record does not exist',
+          message: 'The product does not exist',
           code: 'E_ROW_NOT_FOUND',
           data: null,
         })
@@ -113,7 +113,7 @@ export default class MailListController {
       if (error.code === 'ER_ROW_IS_REFERENCED_2') {
         return response.status(400).json({
           success: false,
-          message: 'Cannot delete the mail record because it has related records',
+          message: 'Cannot delete the product because it has related records',
           data: null,
           code: 'ER_ROW_IS_REFERENCED_2',
         })

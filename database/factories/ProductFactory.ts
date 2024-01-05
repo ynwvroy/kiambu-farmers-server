@@ -1,7 +1,7 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
-import MailList from 'App/Models/MailList'
+import Product from 'App/Models/Product'
 
-export const MailListFactory = Factory.define(MailList, ({ faker }) => {
+export const ProductFactory = Factory.define(Product, ({ faker }) => {
   return {
     type: faker.company.name(),
     email: faker.internet.email(),
