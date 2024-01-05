@@ -13,6 +13,7 @@ export default class Contact extends BaseSchema {
       table.string('image_url')
       table.integer('price')
       table.integer('seller_id').unsigned().references('id').inTable('users')
+      table.integer('category_id').unsigned().references('id').inTable('product_categories')
       table.timestamps(true)
     })
   }
