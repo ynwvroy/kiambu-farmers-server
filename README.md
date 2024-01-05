@@ -1,6 +1,6 @@
 # kiambu-farmers - (server)
 
-> Ticketing Application
+> KFA Agritech Solution
 
 ## Quick Installation
 

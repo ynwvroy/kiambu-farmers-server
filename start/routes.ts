@@ -157,20 +157,6 @@ Route.group(() => {
 
   /**
    * ============================================
-   * Tickets
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/', 'TicketsController.index')
-    Route.get('/event/:id', 'TicketsController.getEventTickets')
-    Route.post('/', 'TicketsController.store')
-    Route.get('/:id', 'TicketsController.show')
-    Route.put('/:id', 'TicketsController.update')
-    Route.delete('/:id', 'TicketsController.delete')
-  }).prefix('/tickets')
-
-  /**
-   * ============================================
    * Contact queries
    * ============================================
    */
