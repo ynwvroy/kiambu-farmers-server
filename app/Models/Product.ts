@@ -33,7 +33,7 @@ export default class Product extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  // User relation
+  // Seller relation
   @belongsTo(() => User, {
     foreignKey: 'seller_id',
   })
