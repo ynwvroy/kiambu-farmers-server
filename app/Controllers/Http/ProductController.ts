@@ -4,7 +4,7 @@ import Product from '../../Models/Product'
 export default class ProductController {
   public async index({ response }: HttpContextContract) {
     try {
-      const product = await Product.query().select('*').from('mail_lists')
+      const product = await Product.query().select('*').from('products')
       return response.json({
         success: true,
         message: 'Products retrieved successfully',

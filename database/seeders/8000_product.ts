@@ -3,6 +3,6 @@ import { ProductFactory } from 'Database/factories/ProductFactory'
 
 export default class UserSeeder extends BaseSeeder {
   public async run() {
-    await ProductFactory.createMany(10)
+    await ProductFactory.with('seller', 5).createMany(10)
   }
 }

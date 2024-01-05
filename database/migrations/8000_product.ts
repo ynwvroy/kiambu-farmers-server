@@ -1,13 +1,18 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class Contact extends BaseSchema {
-  protected tableName = 'mail_lists'
+  protected tableName = 'products'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('type')
-      table.string('email')
+      table.string('name')
+      table.text('description')
+      table.integer('stock_quantity')
+      table.integer('units_sold')
+      table.string('image_url')
+      table.integer('price')
+      table.integer('seller_id').unsigned().references('id').inTable('users')
       table.timestamps(true)
     })
   }
