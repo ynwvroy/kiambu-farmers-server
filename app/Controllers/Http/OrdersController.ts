@@ -4,7 +4,12 @@ import Orders from '../../Models/Orders'
 export default class OrdersController {
   public async index({ response }: HttpContextContract) {
     try {
-      const orders = await Orders.query().select('*').from('orders')
+      const orders = await Orders.query()
+        .select('*')
+        .from('orders')
+        .preload('buyer')
+        .preload('seller')
+        .preload('product')
       return response.json({
         success: true,
         message: 'Order retrieved successfully',
@@ -19,9 +24,16 @@ export default class OrdersController {
     }
   }
 
-  public async show({ params, response }: HttpContextContract) {
+  public async showById({ params, response }: HttpContextContract) {
     try {
-      const ordersQuery = await Orders.query().where('id', params.id).first()
+      const ordersQuery = await Orders.query()
+        .select('*')
+        .from('orders')
+        .where('id', params.id)
+        .preload('buyer')
+        .preload('seller')
+        .preload('product')
+        .first()
       if (ordersQuery) {
         return response.json({
           success: true,
@@ -32,6 +44,68 @@ export default class OrdersController {
         return response.json({
           success: true,
           message: 'Order not found',
+          data: null,
+        })
+      }
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
+  public async showBySellerId({ params, response }: HttpContextContract) {
+    try {
+      const order = await Orders.query()
+        .select('*')
+        .from('orders')
+        .where('seller_id', params.id)
+        .preload('seller')
+        .preload('buyer')
+        .preload('product')
+      if (order) {
+        return response.json({
+          success: true,
+          message: "Seller's order record retrieved successfully",
+          data: order,
+        })
+      } else {
+        return response.json({
+          success: true,
+          message: "Seller's order record not found",
+          data: null,
+        })
+      }
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
+  public async showByBuyerId({ params, response }: HttpContextContract) {
+    try {
+      const order = await Orders.query()
+        .select('*')
+        .from('orders')
+        .where('buyer_id', params.id)
+        .preload('seller')
+        .preload('buyer')
+        .preload('product')
+      if (order) {
+        return response.json({
+          success: true,
+          message: "Buyer's order record retrieved successfully",
+          data: order,
+        })
+      } else {
+        return response.json({
+          success: true,
+          message: "Buyer's order record not found",
           data: null,
         })
       }

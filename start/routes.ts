@@ -152,16 +152,18 @@ Route.group(() => {
 
   /**
    * ============================================
-   * Orders Application
+   * Orders
    * ============================================
    */
   Route.group(() => {
     Route.get('/', 'OrdersController.index')
-    Route.get('/:id', 'OrdersController.show')
+    Route.get('/:id', 'OrdersController.showById')
+    Route.get('/seller/:id', 'OrdersController.showBySellerId')
+    Route.get('/buyer/:id', 'OrdersController.showByBuyerId')
     Route.post('/', 'OrdersController.store')
     Route.put('/:id', 'OrdersController.update')
     Route.delete('/:id', 'OrdersController.delete')
-  }).prefix('/order')
+  }).prefix('/orders')
 })
   .prefix('/api/v1')
   .middleware('auth')
