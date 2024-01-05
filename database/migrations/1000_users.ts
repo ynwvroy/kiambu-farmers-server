@@ -12,7 +12,7 @@ export default class UsersSchema extends BaseSchema {
       table.string('profile_url').nullable()
       table.string('email', 255).notNullable().unique()
       table.string('password', 180).notNullable()
-      table.enum('user_type', ['super_admin', 'event_organizer', 'user']).defaultTo('user')
+      table.enum('user_type', ['super_admin', 'farmer', 'customer', 'support']).defaultTo('farmer')
       table.boolean('is_verified').defaultTo(false)
       table.integer('organization_id').unsigned().nullable()
       table.timestamp('created_at', { useTz: true }).notNullable()

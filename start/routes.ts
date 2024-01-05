@@ -58,38 +58,6 @@ Route.group(() => {
 
   /**
    * ============================================
-   * Events comments
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/', 'EventsCommentsController.index')
-    Route.get('/:id', 'EventsCommentsController.show')
-    Route.post('/', 'EventsCommentsController.store')
-    Route.put('/:id', 'EventsCommentsController.update')
-    Route.delete('/:id', 'EventsCommentsController.delete')
-  }).prefix('/events-comments')
-
-  /**
-   * ============================================
-   * Events
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/', 'EventsController.index')
-    Route.post('/', 'EventsController.store')
-    Route.get('/:id', 'EventsController.showById')
-    Route.get('/slug/:slug', 'EventsController.showBySlug')
-    Route.put('/:id', 'EventsController.update')
-    Route.delete('/:id', 'EventsController.delete')
-
-    Route.get('/org/:id', 'EventsController.getOrganizationEventsById')
-    Route.get('/org-slug/:slug', 'EventsController.getOrganizationEventsBySlug')
-    Route.get('/category/:id', 'EventsController.getEventCategoryEventsById')
-    Route.get('/category-slug/:slug', 'EventsController.getEventCategoryEventsBySlug')
-  }).prefix('/events')
-
-  /**
-   * ============================================
    * Users
    * ============================================
    */
@@ -117,19 +85,6 @@ Route.group(() => {
     Route.put('/:id', 'OrganizationsController.update')
     Route.delete('/:id', 'OrganizationsController.delete')
   }).prefix('/organizations')
-
-  /**
-   * ============================================
-   * Organization comments
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/', 'OrganizationsCommentsController.index')
-    Route.get('/:id', 'OrganizationsCommentsController.show')
-    Route.post('/', 'OrganizationsCommentsController.store')
-    Route.put('/:id', 'OrganizationsCommentsController.update')
-    Route.delete('/:id', 'OrganizationsCommentsController.delete')
-  }).prefix('/organizations-comments')
 
   /**
    * ============================================
