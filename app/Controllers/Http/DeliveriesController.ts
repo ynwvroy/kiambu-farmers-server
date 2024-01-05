@@ -1,18 +1,15 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { rules, schema } from '@ioc:Adonis/Core/Validator'
-import Organizations from '../../Models/Organizations'
+import { schema } from '@ioc:Adonis/Core/Validator'
+import Deliveries from '../../Models/Deliveries'
 
-export default class OrganizationsController {
+export default class DeliveriesController {
   public async index({ response }: HttpContextContract) {
     try {
-      const organizations = await Organizations.query()
-        .select('*')
-        .from('organizations')
-        .preload('user')
+      const deliveries = await Deliveries.query().select('*').from('deliveries').preload('user')
       return response.json({
         success: true,
-        message: 'Organizations retrieved successfully',
-        data: organizations,
+        message: 'Deliveries retrieved successfully',
+        data: deliveries,
       })
     } catch (error) {
       return response.json({
@@ -25,17 +22,17 @@ export default class OrganizationsController {
 
   public async showById({ params, response }: HttpContextContract) {
     try {
-      const organizations = await Organizations.find(params.id)
-      if (organizations) {
+      const deliveries = await Deliveries.find(params.id)
+      if (deliveries) {
         return response.json({
           success: true,
-          message: 'Organization retrieved successfully',
-          data: organizations,
+          message: 'Deliveries retrieved successfully',
+          data: deliveries,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Organization not found',
+          message: 'Deliveries not found',
           data: null,
         })
       }
@@ -48,24 +45,24 @@ export default class OrganizationsController {
     }
   }
 
-  // Get organization by slug
+  // Get deliveries by slug
   public async showBySlug({ params, response }: HttpContextContract) {
     try {
-      const organization = await Organizations.query()
+      const deliveries = await Deliveries.query()
         .select('*')
-        .from('organizations')
+        .from('deliveries')
         .where('slug', params.slug)
 
-      if (organization) {
+      if (deliveries) {
         return response.json({
           success: true,
-          message: 'Organization retrieved successfully',
-          data: organization,
+          message: 'Deliveries retrieved successfully',
+          data: deliveries,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Organization not found',
+          message: 'Deliveries not found',
           data: null,
         })
       }
@@ -81,10 +78,10 @@ export default class OrganizationsController {
   public async store({ request, response }: HttpContextContract) {
     try {
       // const data = request.all()
-      // const organizations = await Organizations.create(data)
+      // const deliveries = await Deliveries.create(data)
 
       // use a schema
-      const organizationSchema = schema.create({
+      const deliveriesSchema = schema.create({
         name: schema.string(),
         description: schema.string.optional(),
         slug: schema.string(),
@@ -99,21 +96,21 @@ export default class OrganizationsController {
         profile_url: schema.string.optional(),
       })
 
-      const payload = await request.validate({ schema: organizationSchema })
-      const organization = await Organizations.create(payload)
-      await organization.refresh()
+      const payload = await request.validate({ schema: deliveriesSchema })
+      const deliveries = await Deliveries.create(payload)
+      await deliveries.refresh()
 
       return response.json({
         success: true,
-        message: 'Organization created successfully',
-        data: organization,
+        message: 'Deliveries created successfully',
+        data: deliveries,
       })
     } catch (error) {
       if (error.code === 'ER_DUP_ENTRY') {
         // Duplicate entry error
         return response.status(400).json({
           success: false,
-          message: 'An organization with that name already exists.',
+          message: 'An deliveries with that name already exists.',
           data: null,
           code: 'ER_DUP_ENTRY',
         })
@@ -128,21 +125,21 @@ export default class OrganizationsController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const organizations = await Organizations.findOrFail(params.id)
-      if (!organizations) {
+      const deliveries = await Deliveries.findOrFail(params.id)
+      if (!deliveries) {
         return response.json({
           success: true,
-          message: 'Organization not found',
+          message: 'Deliveries not found',
           data: null,
         })
       } else {
-        organizations.merge(request.all())
+        deliveries.merge(request.all())
 
-        await organizations.save()
+        await deliveries.save()
         return response.json({
           success: true,
-          message: 'Organization updated successfully',
-          data: organizations,
+          message: 'Deliveries updated successfully',
+          data: deliveries,
         })
       }
     } catch (error) {
@@ -156,19 +153,19 @@ export default class OrganizationsController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const organization = await Organizations.findOrFail(params.id)
-      await organization.delete()
+      const deliveries = await Deliveries.findOrFail(params.id)
+      await deliveries.delete()
 
       return response.json({
         success: true,
-        message: 'Successfully deleted the organization',
+        message: 'Successfully deleted the deliveries',
         data: null,
       })
     } catch (error) {
       if (error.code === 'E_ROW_NOT_FOUND') {
         return response.status(400).json({
           success: false,
-          message: 'The organization does not exist',
+          message: 'The deliveries does not exist',
           data: null,
           code: 'E_ROW_NOT_FOUND',
         })
@@ -177,7 +174,7 @@ export default class OrganizationsController {
       if (error.code === 'ER_ROW_IS_REFERENCED_2') {
         return response.status(400).json({
           success: false,
-          message: 'Cannot delete the organization because it has related records',
+          message: 'Cannot delete the deliveries because it has related records',
           data: null,
           code: 'ER_ROW_IS_REFERENCED_2',
         })

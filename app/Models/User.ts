@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import { BaseModel, column, belongsTo, BelongsTo, beforeSave } from '@ioc:Adonis/Lucid/Orm'
-import Organization from 'App/Models/Organizations'
+import Deliveries from 'App/Models/Deliveries'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -26,7 +26,7 @@ export default class User extends BaseModel {
   public is_verified: boolean
 
   @column()
-  public organization_id: number
+  public deliveries_id: number
 
   @column({ serializeAs: null })
   public password: string
@@ -47,9 +47,9 @@ export default class User extends BaseModel {
     }
   }
 
-  // Organization relation
-  @belongsTo(() => Organization, {
-    foreignKey: 'organization_id',
+  // Deliveries relation
+  @belongsTo(() => Deliveries, {
+    foreignKey: 'deliveries_id',
   })
-  public organization: BelongsTo<typeof Organization>
+  public deliveries: BelongsTo<typeof Deliveries>
 }

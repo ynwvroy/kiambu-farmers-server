@@ -74,17 +74,17 @@ Route.group(() => {
 Route.group(() => {
   /**
    * ============================================
-   * Organization
+   * Deliveries
    * ============================================
    */
   Route.group(() => {
-    Route.get('/', 'OrganizationsController.index')
-    Route.post('/', 'OrganizationsController.store')
-    Route.get('/:id', 'OrganizationsController.showById')
-    Route.get('/slug/:slug', 'OrganizationsController.showBySlug')
-    Route.put('/:id', 'OrganizationsController.update')
-    Route.delete('/:id', 'OrganizationsController.delete')
-  }).prefix('/organizations')
+    Route.get('/', 'DeliveriesController.index')
+    Route.post('/', 'DeliveriesController.store')
+    Route.get('/:id', 'DeliveriesController.showById')
+    Route.get('/slug/:slug', 'DeliveriesController.showBySlug')
+    Route.put('/:id', 'DeliveriesController.update')
+    Route.delete('/:id', 'DeliveriesController.delete')
+  }).prefix('/deliveries')
 
   /**
    * ============================================

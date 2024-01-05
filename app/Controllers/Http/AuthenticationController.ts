@@ -37,7 +37,7 @@ export default class AuthenticationController {
 
   public async index({ response }: HttpContextContract) {
     try {
-      const users = await User.query().select('*').from('users').preload('organization')
+      const users = await User.query().select('*').from('users').preload('deliveries')
       return response.json({
         success: true,
         message: 'Users retrieved successfully',
@@ -139,7 +139,7 @@ export default class AuthenticationController {
         password: schema.string(),
         user_type: schema.string(),
         profile_url: schema.string.optional(), // Use .optional() to make it nullable
-        organization_id: schema.number.optional(),
+        deliveries_id: schema.number.optional(),
         is_verified: schema.boolean(),
       })
 

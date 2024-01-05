@@ -1,9 +1,9 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import slugify from 'slugify'
-import Organizations from 'App/Models/Organizations'
+import Deliveries from 'App/Models/Deliveries'
 import { UserFactory } from './UserFactory'
 
-export const OrganizationsFactory = Factory.define(Organizations, ({ faker }) => {
+export const DeliveriesFactory = Factory.define(Deliveries, ({ faker }) => {
   const name = faker.company.name()
   const slug = slugify(name, { lower: true })
 

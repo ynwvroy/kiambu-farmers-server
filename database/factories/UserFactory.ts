@@ -1,6 +1,6 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import User from 'App/Models/User'
-import { OrganizationsFactory } from './OrganizationsFactory'
+import { DeliveriesFactory } from './DeliveriesFactory'
 
 export const UserFactory = Factory.define(User, ({ faker }) => {
   return {
@@ -14,5 +14,5 @@ export const UserFactory = Factory.define(User, ({ faker }) => {
     is_verified: faker.datatype.boolean(),
   }
 })
-  .relation('organization', () => OrganizationsFactory)
+  .relation('deliveries', () => DeliveriesFactory)
   .build()
