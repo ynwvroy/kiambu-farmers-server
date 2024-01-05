@@ -44,21 +44,6 @@ Route.group(() => {
 Route.group(() => {
   /**
    * ============================================
-   * Analytics - GET
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/tasks', 'AnalyticsController.tasks')
-    Route.get('/organizations', 'AnalyticsController.organizations')
-    Route.get('/event-categories', 'AnalyticsController.eventCategories')
-    Route.get('/careers', 'AnalyticsController.careers')
-    Route.get('/mail-list', 'AnalyticsController.mailList')
-    Route.get('/organizations-comments', 'AnalyticsController.organizationComments')
-    Route.get('/events-comments', 'AnalyticsController.eventsComments')
-  }).prefix('/analytics')
-
-  /**
-   * ============================================
    * Event categories
    * ============================================
    */
@@ -222,19 +207,6 @@ Route.group(() => {
     Route.put('/:id', 'SalesController.update')
     Route.delete('/:id', 'SalesController.delete')
   }).prefix('/sales')
-
-  /**
-   * ============================================
-   * Tasks
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/', 'TasksController.index')
-    Route.post('/', 'TasksController.store')
-    Route.get('/:id', 'TasksController.show')
-    Route.put('/:id', 'TasksController.update')
-    Route.delete('/:id', 'TasksController.delete')
-  }).prefix('/tasks')
 
   /**
    * ============================================
