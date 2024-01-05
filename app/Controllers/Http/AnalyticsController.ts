@@ -1,7 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { DateTime } from 'luxon'
 import Tasks from 'App/Models/Tasks'
-import Teams from 'App/Models/Team'
+import Teams from 'App/Models/Sales'
 import Organizations from 'App/Models/Organizations'
 import Events from 'App/Models/Events'
 import EventCategories from 'App/Models/EventCategories'

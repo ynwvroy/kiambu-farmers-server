@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
-import Team from 'App/Models/Team'
+import Team from 'App/Models/Sales'
 import User from 'App/Models/User'
 
 export default class Tasks extends BaseModel {

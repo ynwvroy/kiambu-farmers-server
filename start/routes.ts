@@ -50,7 +50,6 @@ Route.group(() => {
   Route.group(() => {
     Route.get('/tasks', 'AnalyticsController.tasks')
     Route.get('/organizations', 'AnalyticsController.organizations')
-    Route.get('/teams', 'AnalyticsController.teams')
     Route.get('/event-categories', 'AnalyticsController.eventCategories')
     Route.get('/careers', 'AnalyticsController.careers')
     Route.get('/mail-list', 'AnalyticsController.mailList')
@@ -213,16 +212,16 @@ Route.group(() => {
 
   /**
    * ============================================
-   * Teams
+   * Sales
    * ============================================
    */
   Route.group(() => {
-    Route.get('/', 'TeamController.index')
-    Route.post('/', 'TeamController.store')
-    Route.get('/:id', 'TeamController.show')
-    Route.put('/:id', 'TeamController.update')
-    Route.delete('/:id', 'TeamController.delete')
-  }).prefix('/teams')
+    Route.get('/', 'SalesController.index')
+    Route.post('/', 'SalesController.store')
+    Route.get('/:id', 'SalesController.show')
+    Route.put('/:id', 'SalesController.update')
+    Route.delete('/:id', 'SalesController.delete')
+  }).prefix('/sales')
 
   /**
    * ============================================

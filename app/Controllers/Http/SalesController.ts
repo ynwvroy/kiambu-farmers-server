@@ -1,18 +1,14 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Team from '../../Models/Team'
+import Sales from '../../Models/Sales'
 
-export default class TeamController {
+export default class SalesController {
   public async index({ response }: HttpContextContract) {
     try {
-      const team = await Team.query()
-        .select('*')
-        .from('teams')
-        .preload('organization')
-        .preload('event')
+      const sales = await Sales.query().select('*').from('sales')
       return response.json({
         success: true,
-        message: 'Teams retrieved successfully',
-        data: team,
+        message: 'All sales retrieved successfully',
+        data: sales,
       })
     } catch (error) {
       return response.json({
@@ -25,17 +21,17 @@ export default class TeamController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const team = await Team.find(params.id)
-      if (team) {
+      const sales = await Sales.find(params.id)
+      if (sales) {
         return response.json({
           success: true,
-          message: 'Team retrieved successfully',
-          data: team,
+          message: 'Sales retrieved successfully',
+          data: sales,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Team not found',
+          message: 'Sales not found',
           data: null,
         })
       }
@@ -51,11 +47,11 @@ export default class TeamController {
   public async store({ request, response }: HttpContextContract) {
     try {
       const data = request.all()
-      const teamQuery = await Team.create(data)
+      const salesQuery = await Sales.create(data)
       return response.json({
         success: true,
-        message: 'Team saved successfully',
-        data: teamQuery,
+        message: 'Sale saved successfully',
+        data: salesQuery,
       })
     } catch (error) {
       return response.json({
@@ -68,21 +64,21 @@ export default class TeamController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const team = await Team.findOrFail(params.id)
-      if (!team) {
+      const sales = await Sales.findOrFail(params.id)
+      if (!sales) {
         return response.json({
           success: true,
-          message: 'Team not found',
+          message: 'Sales not found',
           data: null,
         })
       } else {
-        team.merge(request.all())
+        sales.merge(request.all())
 
-        await team.save()
+        await sales.save()
         return response.json({
           success: true,
-          message: 'Team updated successfully',
-          data: team,
+          message: 'Sales updated successfully',
+          data: sales,
         })
       }
     } catch (error) {
@@ -96,19 +92,19 @@ export default class TeamController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const team = await Team.findOrFail(params.id)
-      await team.delete()
+      const sales = await Sales.findOrFail(params.id)
+      await sales.delete()
 
       return response.json({
         success: true,
-        message: 'Successfully deleted the team',
+        message: 'Successfully deleted the sale',
         data: null,
       })
     } catch (error) {
       if (error.code === 'E_ROW_NOT_FOUND') {
         return response.status(400).json({
           success: false,
-          message: 'The team does not exist',
+          message: 'The sales does not exist',
           code: 'E_ROW_NOT_FOUND',
           data: null,
         })
@@ -117,7 +113,7 @@ export default class TeamController {
       if (error.code === 'ER_ROW_IS_REFERENCED_2') {
         return response.status(400).json({
           success: false,
-          message: 'Cannot delete the team because it has related records',
+          message: 'Cannot delete the sale because it has related records',
           data: null,
           code: 'ER_ROW_IS_REFERENCED_2',
         })

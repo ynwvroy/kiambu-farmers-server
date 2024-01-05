@@ -1,16 +1,15 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Teams extends BaseSchema {
-  protected tableName = 'teams'
+export default class Sales extends BaseSchema {
+  protected tableName = 'sales'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('name')
-      table.string('slug')
+      table.integer('transaction_id')
+      table.string('date')
       table.string('description')
-      table.integer('event_id').unsigned().references('id').inTable('events')
-      table.integer('organization_id').unsigned().references('id').inTable('organizations')
+      table.integer('user_id').unsigned().references('id').inTable('users')
       table.timestamps(true)
     })
   }

@@ -1,7 +1,7 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Task from 'App/Models/Tasks'
 import slugify from 'slugify'
-import { TeamFactory } from './TeamFactory'
+import { TeamFactory } from './SalesFactory'
 import { UserFactory } from './UserFactory'
 
 export const TaskFactory = Factory.define(Task, ({ faker }) => {
