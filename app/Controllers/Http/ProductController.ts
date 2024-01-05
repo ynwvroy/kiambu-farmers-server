@@ -4,7 +4,11 @@ import Product from '../../Models/Product'
 export default class ProductController {
   public async index({ response }: HttpContextContract) {
     try {
-      const product = await Product.query().select('*').from('products').preload('seller')
+      const product = await Product.query()
+        .select('*')
+        .from('products')
+        .preload('seller')
+        .preload('category')
       return response.json({
         success: true,
         message: 'Products retrieved successfully',
