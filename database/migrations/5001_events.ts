@@ -19,7 +19,7 @@ export default class Events extends BaseSchema {
       table.time('end_time')
       table.integer('views')
       table.integer('number_of_days')
-      table.integer('event_category_id').unsigned().references('id').inTable('event_categories')
+      table.integer('product_category_id').unsigned().references('id').inTable('product_categories')
       table.integer('events_tickets_id').unsigned().references('id').inTable('events_tickets')
       table.integer('organization_id').unsigned().references('id').inTable('organizations')
       table.string('event_qr_code')

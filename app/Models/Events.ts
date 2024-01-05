@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
-import EventCategories from 'App/Models/EventCategories'
+import ProductCategories from 'App/Models/ProductCategories'
 import Organization from 'App/Models/Organizations'
 import EventsTickets from 'App/Models/EventsTickets'
 
@@ -36,7 +36,7 @@ export default class Event extends BaseModel {
   public event_has_tickets: boolean
 
   @column()
-  public event_category_id: number
+  public product_category_id: number
 
   @column()
   public events_tickets_id: number
@@ -92,11 +92,11 @@ export default class Event extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  // Event category relation
-  @belongsTo(() => EventCategories, {
-    foreignKey: 'event_category_id',
+  // Product category relation
+  @belongsTo(() => ProductCategories, {
+    foreignKey: 'product_category_id',
   })
-  public category: BelongsTo<typeof EventCategories>
+  public category: BelongsTo<typeof ProductCategories>
 
   // Organization relation
   @belongsTo(() => Organization, {

@@ -1,7 +1,7 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Events from 'App/Models/Events'
 import slugify from 'slugify'
-import { EventCategoriesFactory } from './EventCategoriesFactory'
+import { ProductCategoriesFactory } from './ProductCategoriesFactory'
 import { OrganizationsFactory } from './OrganizationsFactory'
 
 export const EventsFactory = Factory.define(Events, ({ faker }) => {
@@ -34,6 +34,6 @@ export const EventsFactory = Factory.define(Events, ({ faker }) => {
     is_public: faker.datatype.boolean(),
   }
 })
-  .relation('category', () => EventCategoriesFactory)
+  .relation('category', () => ProductCategoriesFactory)
   .relation('organization', () => OrganizationsFactory)
   .build()

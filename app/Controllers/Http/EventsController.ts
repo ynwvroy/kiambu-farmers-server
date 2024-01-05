@@ -217,19 +217,19 @@ export default class EventsController {
     }
   }
 
-  // // Events from one event category
-  public async getEventCategoryEventsById({ params, response }: HttpContextContract) {
+  // // Events from one product category
+  public async getProductCategoryEventsById({ params, response }: HttpContextContract) {
     try {
-      const events = await Events.query()
+      const products = await Events.query()
         .select('*')
         .from('events')
-        .where('event_category_id', params.id)
+        .where('product_category_id', params.id)
         .preload('organization')
         .preload('category')
       return response.json({
         success: true,
-        message: 'Event category events retrieved successfully',
-        data: events,
+        message: 'Product category events retrieved successfully',
+        data: products,
       })
     } catch (error) {
       return response.json({
@@ -240,8 +240,8 @@ export default class EventsController {
     }
   }
 
-  // Events from one event category
-  public async getEventCategoryEventsBySlug({ params, response }: HttpContextContract) {
+  // Events from one product category
+  public async getProductCategoryEventsBySlug({ params, response }: HttpContextContract) {
     try {
       const events = await Events.query()
         .select('*')
@@ -254,7 +254,7 @@ export default class EventsController {
 
       return response.json({
         success: true,
-        message: 'Event category events retrieved successfully',
+        message: 'Product category events retrieved successfully',
         data: events,
       })
     } catch (error) {

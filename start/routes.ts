@@ -44,17 +44,17 @@ Route.group(() => {
 Route.group(() => {
   /**
    * ============================================
-   * Event categories
+   * Product categories
    * ============================================
    */
   Route.group(() => {
-    Route.get('/', 'EventCategoriesController.index')
-    Route.post('/', 'EventCategoriesController.store')
-    Route.get('/:id', 'EventCategoriesController.showById')
-    Route.get('/slug/:slug', 'EventCategoriesController.showBySlug')
-    Route.put('/:id', 'EventCategoriesController.update')
-    Route.delete('/:id', 'EventCategoriesController.delete')
-  }).prefix('/event-categories')
+    Route.get('/', 'ProductCategoriesController.index')
+    Route.post('/', 'ProductCategoriesController.store')
+    Route.get('/:id', 'ProductCategoriesController.showById')
+    Route.get('/slug/:slug', 'ProductCategoriesController.showBySlug')
+    Route.put('/:id', 'ProductCategoriesController.update')
+    Route.delete('/:id', 'ProductCategoriesController.delete')
+  }).prefix('/product-categories')
 
   /**
    * ============================================

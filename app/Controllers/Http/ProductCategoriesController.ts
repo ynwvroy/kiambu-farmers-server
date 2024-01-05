@@ -1,14 +1,16 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import EventCategories from '../../Models/EventCategories'
+import ProductCategories from '../../Models/ProductCategories'
 
-export default class EventCategoriesController {
+export default class ProductCategoriesController {
   public async index({ response }: HttpContextContract) {
     try {
-      const eventCategories = await EventCategories.query().select('*').from('event_categories')
+      const productCategories = await ProductCategories.query()
+        .select('*')
+        .from('product_categories')
       return response.json({
         success: true,
-        message: 'Event categories retrieved successfully',
-        data: eventCategories,
+        message: 'Product categories retrieved successfully',
+        data: productCategories,
       })
     } catch (error) {
       return response.json({
@@ -19,20 +21,20 @@ export default class EventCategoriesController {
     }
   }
 
-  // Get event category by id
+  // Get product category by id
   public async showById({ params, response }: HttpContextContract) {
     try {
-      const eventCategories = await EventCategories.find(params.id)
-      if (eventCategories) {
+      const productCategories = await ProductCategories.find(params.id)
+      if (productCategories) {
         return response.json({
           success: true,
-          message: 'Event category retrieved successfully',
-          data: eventCategories,
+          message: 'Product category retrieved successfully',
+          data: productCategories,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Event category not found',
+          message: 'Product category not found',
           data: null,
         })
       }
@@ -45,24 +47,24 @@ export default class EventCategoriesController {
     }
   }
 
-  // Get event category by slug
+  // Get Product category by slug
   public async showBySlug({ params, response }: HttpContextContract) {
     try {
-      const eventCategories = await EventCategories.query()
+      const productCategories = await ProductCategories.query()
         .select('*')
-        .from('event_categories')
+        .from('product_categories')
         .where('slug', params.slug)
 
-      if (eventCategories) {
+      if (productCategories) {
         return response.json({
           success: true,
-          message: 'Event category retrieved successfully',
-          data: eventCategories,
+          message: 'Product category retrieved successfully',
+          data: productCategories,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Event category  not found',
+          message: 'Product category  not found',
           data: null,
         })
       }
@@ -78,11 +80,11 @@ export default class EventCategoriesController {
   public async store({ request, response }: HttpContextContract) {
     try {
       const data = request.all()
-      const eventCategories = await EventCategories.create(data)
+      const productCategories = await ProductCategories.create(data)
       return response.json({
         success: true,
-        message: 'Event category created successfully',
-        data: eventCategories,
+        message: 'Product category created successfully',
+        data: productCategories,
       })
     } catch (error) {
       return response.json({
@@ -95,21 +97,21 @@ export default class EventCategoriesController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const eventCategories = await EventCategories.findOrFail(params.id)
-      if (!eventCategories) {
+      const productCategories = await ProductCategories.findOrFail(params.id)
+      if (!productCategories) {
         return response.json({
           success: true,
-          message: 'Event category not found',
+          message: 'Product category not found',
           data: null,
         })
       } else {
-        eventCategories.merge(request.all())
+        productCategories.merge(request.all())
 
-        await eventCategories.save()
+        await productCategories.save()
         return response.json({
           success: true,
-          message: 'Event category updated successfully',
-          data: eventCategories,
+          message: 'Product category updated successfully',
+          data: productCategories,
         })
       }
     } catch (error) {
@@ -123,19 +125,19 @@ export default class EventCategoriesController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const eventCategories = await EventCategories.findOrFail(params.id)
-      await eventCategories.delete()
+      const productCategories = await ProductCategories.findOrFail(params.id)
+      await productCategories.delete()
 
       return response.status(200).json({
         success: true,
-        message: 'Successfully deleted the event category',
+        message: 'Successfully deleted the product category',
         data: null,
       })
     } catch (error) {
       if (error.code === 'E_ROW_NOT_FOUND') {
         return response.status(400).json({
           success: false,
-          message: 'The event category does not exist',
+          message: 'The product category does not exist',
           code: 'E_ROW_NOT_FOUND',
           data: null,
         })
@@ -144,7 +146,7 @@ export default class EventCategoriesController {
       if (error.code === 'ER_ROW_IS_REFERENCED_2') {
         return response.status(400).json({
           success: false,
-          message: 'Cannot delete the event category because it has related records.',
+          message: 'Cannot delete the product category because it has related records.',
           code: 'ER_ROW_IS_REFERENCED_2',
           data: null,
         })

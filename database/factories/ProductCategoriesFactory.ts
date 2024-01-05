@@ -1,8 +1,8 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
-import EventCategories from 'App/Models/EventCategories'
+import ProductCategories from 'App/Models/ProductCategories'
 import slugify from 'slugify'
 
-export const EventCategoriesFactory = Factory.define(EventCategories, ({ faker }) => {
+export const ProductCategoriesFactory = Factory.define(ProductCategories, ({ faker }) => {
   const name = faker.company.name()
   const slug = slugify(name, { lower: true })
   const description = faker.commerce.productDescription()
