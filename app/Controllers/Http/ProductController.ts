@@ -23,9 +23,13 @@ export default class ProductController {
     }
   }
 
-  public async show({ params, response }: HttpContextContract) {
+  public async showById({ params, response }: HttpContextContract) {
     try {
-      const product = await Product.find(params.id)
+      const product = await Product.query()
+        .where('id', params.id)
+        .preload('seller')
+        .preload('category')
+        .first()
       if (product) {
         return response.json({
           success: true,
@@ -36,6 +40,36 @@ export default class ProductController {
         return response.json({
           success: true,
           message: 'Product record not found',
+          data: null,
+        })
+      }
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
+  public async showBySellerId({ params, response }: HttpContextContract) {
+    try {
+      const product = await Product.query()
+        .select('*')
+        .from('products')
+        .where('seller_id', params.id)
+        .preload('seller')
+        .preload('category')
+      if (product) {
+        return response.json({
+          success: true,
+          message: "Farmer's product record retrieved successfully",
+          data: product,
+        })
+      } else {
+        return response.json({
+          success: true,
+          message: "Farmer's product record not found",
           data: null,
         })
       }

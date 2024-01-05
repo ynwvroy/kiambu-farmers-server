@@ -131,7 +131,8 @@ Route.group(() => {
   Route.group(() => {
     Route.get('/', 'ProductController.index')
     Route.post('/', 'ProductController.store')
-    Route.get('/:id', 'ProductController.show')
+    Route.get('/:id', 'ProductController.showById')
+    Route.get('/seller/:id', 'ProductController.showBySellerId')
     Route.put('/:id', 'ProductController.update')
     Route.delete('/:id', 'ProductController.delete')
   }).prefix('/products')
