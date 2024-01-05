@@ -10,7 +10,7 @@ import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 Route.get('api/v1', ({ response }: HttpContextContract) => {
   return response.status(200).json({
     success: true,
-    message: 'Eveenti API running 🚀',
+    message: 'Kiambu Farmers API running 🚀',
   })
 })
 /**

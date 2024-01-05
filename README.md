@@ -1,4 +1,4 @@
-# Eveenti - (server)
+# kiambu-farmers - (server)
 
 > Ticketing Application
 
@@ -6,7 +6,7 @@
 
 ```bash
 ### Clone the git repository
-git clone https://github.com/Eveenti-Ticketing/adonis-server.git
+git clone https://github.com/innocent-maina/kiambu-farmers-server
 
 ### Setup environment variables
 cp .env.example .env
