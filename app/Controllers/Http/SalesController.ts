@@ -23,7 +23,7 @@ export default class SalesController {
     }
   }
 
-  public async show({ params, response }: HttpContextContract) {
+  public async showById({ params, response }: HttpContextContract) {
     try {
       const sales = await Sales.query()
         .where('id', params.id)
@@ -40,6 +40,36 @@ export default class SalesController {
         return response.json({
           success: true,
           message: 'Sales not found',
+          data: null,
+        })
+      }
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
+  public async showBySellerId({ params, response }: HttpContextContract) {
+    try {
+      const sales = await Sales.query()
+        .select('*')
+        .from('sales')
+        .where('farmer_id', params.id)
+        .preload('product')
+        .preload('farmer')
+      if (sales) {
+        return response.json({
+          success: true,
+          message: "Seller's sale record retrieved successfully",
+          data: sales,
+        })
+      } else {
+        return response.json({
+          success: true,
+          message: "Seller's sale record not found",
           data: null,
         })
       }
