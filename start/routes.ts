@@ -64,6 +64,20 @@ Route.group(() => {
   Route.group(() => {
     Route.get('/:id', 'AuthenticationController.show')
   }).prefix('/user')
+
+  /**
+   * ============================================
+   * Product List
+   * ============================================
+   */
+  Route.group(() => {
+    Route.get('/', 'ProductController.index')
+    Route.post('/', 'ProductController.store')
+    Route.get('/:id', 'ProductController.showById')
+    Route.get('/seller/:id', 'ProductController.showBySellerId')
+    Route.put('/:id', 'ProductController.update')
+    Route.delete('/:id', 'ProductController.delete')
+  }).prefix('/products')
 }).prefix('/api/v1')
 
 /**
@@ -122,20 +136,6 @@ Route.group(() => {
     Route.put('/:id', 'ContactController.update')
     Route.delete('/:id', 'ContactController.delete')
   }).prefix('/contact-queries')
-
-  /**
-   * ============================================
-   * Product List
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/', 'ProductController.index')
-    Route.post('/', 'ProductController.store')
-    Route.get('/:id', 'ProductController.showById')
-    Route.get('/seller/:id', 'ProductController.showBySellerId')
-    Route.put('/:id', 'ProductController.update')
-    Route.delete('/:id', 'ProductController.delete')
-  }).prefix('/products')
 
   /**
    * ============================================
