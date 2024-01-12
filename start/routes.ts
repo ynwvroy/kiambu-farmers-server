@@ -145,7 +145,8 @@ Route.group(() => {
   Route.group(() => {
     Route.get('/', 'SalesController.index')
     Route.post('/', 'SalesController.store')
-    Route.get('/:id', 'SalesController.show')
+    Route.get('/:id', 'SalesController.showById')
+    Route.get('/seller/:id', 'SalesController.showBySellerId')
     Route.put('/:id', 'SalesController.update')
     Route.delete('/:id', 'SalesController.delete')
   }).prefix('/sales')
