@@ -4,7 +4,11 @@ import Sales from '../../Models/Sales'
 export default class SalesController {
   public async index({ response }: HttpContextContract) {
     try {
-      const sales = await Sales.query().select('*').from('sales')
+      const sales = await Sales.query()
+        .select('*')
+        .from('sales')
+        .preload('farmer')
+        .preload('product')
       return response.json({
         success: true,
         message: 'All sales retrieved successfully',
@@ -21,7 +25,11 @@ export default class SalesController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const sales = await Sales.find(params.id)
+      const sales = await Sales.query()
+        .where('id', params.id)
+        .preload('farmer')
+        .preload('product')
+        .first()
       if (sales) {
         return response.json({
           success: true,
