@@ -14,6 +14,10 @@ cp .env.example .env
 ### Install project dependencies
 npm install
 
+### Setup database
+node ace migration:run
+node ace db:seed
+
 ### Initialize development server
 npm run dev
 
