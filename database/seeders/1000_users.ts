@@ -24,7 +24,7 @@ export default class UserSeeder extends BaseSeeder {
         email: 'user@user.com',
         password: 'password',
         phone_number: '2543232712345678',
-        user_type: 'customer',
+        user_type: 'user',
         is_verified: true,
       },
       {
