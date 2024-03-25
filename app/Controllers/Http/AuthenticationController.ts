@@ -138,7 +138,6 @@ export default class AuthenticationController {
         email: schema.string({}, [rules.email()]),
         password: schema.string(),
         user_type: schema.string(),
-        profile_url: schema.string.optional(), // Use .optional() to make it nullable
         deliveries_id: schema.number.optional(),
         is_verified: schema.boolean(),
       })

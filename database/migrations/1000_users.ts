@@ -9,7 +9,6 @@ export default class UsersSchema extends BaseSchema {
       table.string('full_name').notNullable()
       table.string('username').notNullable().unique()
       table.string('phone_number').nullable().unique()
-      table.string('profile_url').nullable()
       table.string('email', 255).notNullable().unique()
       table.string('password', 180).notNullable()
       table.enum('user_type', ['super_admin', 'farmer', 'customer', 'support']).defaultTo('farmer')

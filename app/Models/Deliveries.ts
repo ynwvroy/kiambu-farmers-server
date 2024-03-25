@@ -39,9 +39,6 @@ export default class Deliveries extends BaseModel {
   @column()
   public location: string
 
-  @column()
-  public profile_url: string
-
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

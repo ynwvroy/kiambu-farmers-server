@@ -16,7 +16,6 @@ export default class UserSeeder extends BaseSeeder {
         password: 'password',
         phone_number: '254712345678',
         user_type: 'farmer',
-        profile_url: 'https://i.pravatar.cc/300',
         is_verified: true,
       },
       {
@@ -26,7 +25,6 @@ export default class UserSeeder extends BaseSeeder {
         password: 'password',
         phone_number: '2543232712345678',
         user_type: 'customer',
-        profile_url: 'https://i.pravatar.cc/300',
         is_verified: true,
       },
       {
@@ -36,7 +34,6 @@ export default class UserSeeder extends BaseSeeder {
         password: 'password',
         phone_number: '25443434712345678',
         user_type: 'super_admin',
-        profile_url: 'https://i.pravatar.cc/300',
         is_verified: true,
       },
     ])

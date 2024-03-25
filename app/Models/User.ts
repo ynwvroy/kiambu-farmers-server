@@ -18,9 +18,6 @@ export default class User extends BaseModel {
   public email: string
 
   @column()
-  public profile_url: string
-
-  @column()
   public is_verified: boolean
 
   @column({ serializeAs: null })

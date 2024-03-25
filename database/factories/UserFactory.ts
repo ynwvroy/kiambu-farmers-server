@@ -9,7 +9,6 @@ export const UserFactory = Factory.define(User, ({ faker }) => {
     phone_number: faker.phone.number(),
     password: faker.internet.password(),
     user_type: faker.helpers.arrayElement(['super_admin', 'farmer', 'customer', 'support']),
-    profile_url: faker.image.urlLoremFlickr({ category: 'abstract' }),
     is_verified: faker.datatype.boolean(),
   }
 }).build()

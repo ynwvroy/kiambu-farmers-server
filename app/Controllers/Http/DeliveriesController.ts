@@ -93,7 +93,6 @@ export default class DeliveriesController {
         twitter_url: schema.string.optional(),
         linkedin_url: schema.string.optional(),
         location: schema.string.optional(),
-        profile_url: schema.string.optional(),
       })
 
       const payload = await request.validate({ schema: deliveriesSchema })

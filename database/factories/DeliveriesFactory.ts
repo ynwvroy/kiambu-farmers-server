@@ -13,7 +13,6 @@ export const DeliveriesFactory = Factory.define(Deliveries, ({ faker }) => {
     contact_phone_number: faker.phone.number(),
     contact_email: faker.internet.email(),
     location: faker.location.city(),
-    profile_url: faker.image.urlLoremFlickr({ category: 'abstract' }),
     instagram_url: faker.internet.url(),
     facebook_url: faker.internet.url(),
     twitter_url: faker.internet.url(),

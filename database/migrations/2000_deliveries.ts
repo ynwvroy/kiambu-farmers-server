@@ -23,7 +23,6 @@ export default class Deliveries extends BaseSchema {
       table.string('twitter_url')
       table.string('linkedin_url')
       table.string('location')
-      table.text('profile_url')
       table.timestamps(true)
     })
   }
