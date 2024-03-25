@@ -58,16 +58,6 @@ Route.group(() => {
 
   /**
    * ============================================
-   * Users
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/:id', 'AuthenticationController.show')
-    Route.get('/all/farmers', 'AuthenticationController.getFarmers')
-  }).prefix('/user')
-
-  /**
-   * ============================================
    * Product List
    * ============================================
    */
@@ -89,25 +79,13 @@ Route.group(() => {
 Route.group(() => {
   /**
    * ============================================
-   * Deliveries
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/', 'DeliveriesController.index')
-    Route.post('/', 'DeliveriesController.store')
-    Route.get('/:id', 'DeliveriesController.showById')
-    Route.get('/slug/:slug', 'DeliveriesController.showBySlug')
-    Route.put('/:id', 'DeliveriesController.update')
-    Route.delete('/:id', 'DeliveriesController.delete')
-  }).prefix('/deliveries')
-
-  /**
-   * ============================================
    * Users
    * ============================================
    */
   Route.group(() => {
-    Route.get('/', 'AuthenticationController.index')
+    Route.get('/', 'UserController.index')
+    Route.get('/:id', 'UserController.show')
+    Route.get('/all/farmers', 'UserController.getFarmers')
     Route.put('/:id', 'UserController.update')
     Route.delete('/:id', 'UserController.delete')
   }).prefix('/user')
