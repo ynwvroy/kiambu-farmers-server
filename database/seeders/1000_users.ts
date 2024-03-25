@@ -1,13 +1,9 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import { UserFactory } from 'Database/factories/UserFactory'
+// import { UserFactory } from 'Database/factories/UserFactory'
 import User from 'App/Models/User'
 
 export default class UserSeeder extends BaseSeeder {
   public async run() {
-    // Create 10 generic user records using the factory
-    await UserFactory.createMany(10)
-
-    // Create specific user records
     await User.createMany([
       {
         full_name: 'Wahome Farmer',
@@ -34,6 +30,96 @@ export default class UserSeeder extends BaseSeeder {
         password: 'password',
         phone_number: '25443434712345678',
         user_type: 'super_admin',
+        is_verified: true,
+      },
+      {
+        full_name: 'Alice Farmer',
+        username: 'alice_farmer',
+        email: 'alice@farmer.com',
+        password: 'password',
+        phone_number: '254712345679',
+        user_type: 'farmer',
+        is_verified: true,
+      },
+      {
+        full_name: 'Bob User',
+        username: 'bob_user',
+        email: 'bob@user.com',
+        password: 'password',
+        phone_number: '2543232712345679',
+        user_type: 'user',
+        is_verified: true,
+      },
+      {
+        full_name: 'Charlie Farmer',
+        username: 'charlie_farmer',
+        email: 'charlie@farmer.com',
+        password: 'password',
+        phone_number: '254712345670',
+        user_type: 'farmer',
+        is_verified: true,
+      },
+      {
+        full_name: 'David User',
+        username: 'david_user',
+        email: 'david@user.com',
+        password: 'password',
+        phone_number: '2543232712345670',
+        user_type: 'user',
+        is_verified: true,
+      },
+      {
+        full_name: 'Eve Farmer',
+        username: 'eve_farmer',
+        email: 'eve@farmer.com',
+        password: 'password',
+        phone_number: '254712345671',
+        user_type: 'farmer',
+        is_verified: true,
+      },
+      {
+        full_name: 'Frank User',
+        username: 'frank_user',
+        email: 'frank@user.com',
+        password: 'password',
+        phone_number: '2543232712345671',
+        user_type: 'user',
+        is_verified: true,
+      },
+      {
+        full_name: 'Grace Farmer',
+        username: 'grace_farmer',
+        email: 'grace@farmer.com',
+        password: 'password',
+        phone_number: '254712345672',
+        user_type: 'farmer',
+        is_verified: true,
+      },
+      {
+        full_name: 'Henry User',
+        username: 'henry_user',
+        email: 'henry@user.com',
+        password: 'password',
+        phone_number: '2543232712345672',
+        user_type: 'user',
+        is_verified: true,
+      },
+      {
+        full_name: 'Ivy Farmer',
+        username: 'ivy_farmer',
+        email: 'ivy@farmer.com',
+        password: 'password',
+        phone_number: '254712345673',
+        user_type: 'farmer',
+        is_verified: true,
+      },
+      {
+        full_name: 'Jack User',
+        username: 'jack_user',
+        email: 'jack@user.com',
+        password: 'password',
+        phone_number: '2543232712345673',
+        user_type: 'user',
         is_verified: true,
       },
     ])
