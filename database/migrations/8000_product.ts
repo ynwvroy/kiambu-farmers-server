@@ -10,7 +10,6 @@ export default class Contact extends BaseSchema {
       table.text('description')
       table.integer('stock_quantity')
       table.integer('units_sold')
-      table.string('image_url')
       table.integer('price')
       table.integer('seller_id').unsigned().references('id').inTable('users')
       table.integer('category_id').unsigned().references('id').inTable('product_categories')

@@ -20,9 +20,6 @@ export default class Product extends BaseModel {
   public units_sold: number
 
   @column()
-  public image_url: string
-
-  @column()
   public price: number
 
   @column()
