@@ -63,6 +63,7 @@ Route.group(() => {
    */
   Route.group(() => {
     Route.get('/:id', 'AuthenticationController.show')
+    Route.get('/all/farmers', 'AuthenticationController.getFarmers')
   }).prefix('/user')
 
   /**
@@ -165,6 +166,5 @@ Route.group(() => {
     Route.put('/:id', 'OrdersController.update')
     Route.delete('/:id', 'OrdersController.delete')
   }).prefix('/orders')
-})
-  .prefix('/api/v1')
-  .middleware('auth')
+}).prefix('/api/v1')
+// .middleware('auth')

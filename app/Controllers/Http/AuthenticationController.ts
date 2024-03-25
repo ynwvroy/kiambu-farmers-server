@@ -37,10 +37,27 @@ export default class AuthenticationController {
 
   public async index({ response }: HttpContextContract) {
     try {
-      const users = await User.query().select('*').from('users').preload('deliveries')
+      const users = await User.query().select('*').from('users')
       return response.json({
         success: true,
         message: 'Users retrieved successfully',
+        data: users,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
+  public async getFarmers({ response }: HttpContextContract) {
+    try {
+      const users = await User.query().where('user_type', 'farmer').select('*').from('users')
+      return response.json({
+        success: true,
+        message: 'Farmers retrieved successfully',
         data: users,
       })
     } catch (error) {
