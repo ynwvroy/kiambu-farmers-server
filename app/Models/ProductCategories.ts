@@ -14,9 +14,6 @@ export default class ProductCategories extends BaseModel {
   @column()
   public slug: string
 
-  @column()
-  public banner_url: string
-
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

@@ -9,7 +9,6 @@ export default class ProductCategories extends BaseSchema {
       table.string('name')
       table.text('description')
       table.string('slug')
-      table.text('banner_url')
       table.timestamps(true)
     })
   }

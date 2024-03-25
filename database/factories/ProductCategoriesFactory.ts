@@ -11,6 +11,5 @@ export const ProductCategoriesFactory = Factory.define(ProductCategories, ({ fak
     name,
     description,
     slug,
-    banner_url: faker.image.urlLoremFlickr({ category: 'abstract' }),
   }
 }).build()
