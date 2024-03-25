@@ -8,7 +8,7 @@ export const UserFactory = Factory.define(User, ({ faker }) => {
     email: faker.internet.email(),
     phone_number: faker.phone.number(),
     password: faker.internet.password(),
-    user_type: faker.helpers.arrayElement(['super_admin', 'farmer', 'customer', 'support']),
+    user_type: faker.helpers.arrayElement(['super_admin', 'farmer', 'user']),
     is_verified: faker.datatype.boolean(),
   }
 }).build()

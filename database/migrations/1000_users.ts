@@ -11,7 +11,7 @@ export default class UsersSchema extends BaseSchema {
       table.string('phone_number').nullable().unique()
       table.string('email', 255).notNullable().unique()
       table.string('password', 180).notNullable()
-      table.enum('user_type', ['super_admin', 'farmer', 'customer', 'support']).defaultTo('farmer')
+      table.enum('user_type', ['super_admin', 'farmer', 'user']).defaultTo('user')
       table.boolean('is_verified').defaultTo(false)
       table.timestamp('created_at', { useTz: true }).notNullable()
       table.timestamp('updated_at', { useTz: true }).notNullable()
