@@ -104,6 +104,54 @@ Route.group(() => {
 
   /**
    * ============================================
+   * Crop healths
+   * ============================================
+   */
+  Route.group(() => {
+    Route.get('/', 'CropHealthController.index')
+    Route.get('/:id', 'CropHealthController.show')
+    Route.put('/:id', 'CropHealthController.update')
+    Route.delete('/:id', 'CropHealthController.delete')
+  }).prefix('/crop-health')
+
+  /**
+   * ============================================
+   * Livestock
+   * ============================================
+   */
+  Route.group(() => {
+    Route.get('/', 'LivestockController.index')
+    Route.get('/:id', 'LivestockController.show')
+    Route.put('/:id', 'LivestockController.update')
+    Route.delete('/:id', 'LivestockController.delete')
+  }).prefix('/livestock')
+
+  /**
+   * ============================================
+   * Livestock health
+   * ============================================
+   */
+  Route.group(() => {
+    Route.get('/', 'LivestockHealthController.index')
+    Route.get('/:id', 'LivestockHealthController.show')
+    Route.put('/:id', 'LivestockHealthController.update')
+    Route.delete('/:id', 'LivestockHealthController.delete')
+  }).prefix('/livestock-health')
+
+  /**
+   * ============================================
+   * Livestock production
+   * ============================================
+   */
+  Route.group(() => {
+    Route.get('/', 'LivestockProductionController.index')
+    Route.get('/:id', 'LivestockProductionController.show')
+    Route.put('/:id', 'LivestockProductionController.update')
+    Route.delete('/:id', 'LivestockProductionController.delete')
+  }).prefix('/livestock-production')
+
+  /**
+   * ============================================
    * Sales
    * ============================================
    */

@@ -4,7 +4,7 @@ import LivestockHealth from '../../Models/LivestockHealth'
 export default class LivestockHealthController {
   public async index({ response }: HttpContextContract) {
     try {
-      const livestockHealth = await LivestockHealth.query().select('*').from('livestock_health')
+      const livestockHealth = await LivestockHealth.query().select('*').from('livestock_healths')
       return response.json({
         success: true,
         message: 'Livestock health records retrieved successfully',
@@ -23,7 +23,7 @@ export default class LivestockHealthController {
     try {
       const healthRecord = await LivestockHealth.query()
         .select('*')
-        .from('livestock_health')
+        .from('livestock_healths')
         .where('id', params.id)
         .first()
       if (healthRecord) {

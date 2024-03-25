@@ -4,7 +4,7 @@ import CropHealth from '../../Models/CropHealth'
 export default class CropHealthController {
   public async index({ response }: HttpContextContract) {
     try {
-      const cropHealth = await CropHealth.query().select('*').from('crop_health')
+      const cropHealth = await CropHealth.query().select('*').from('crop_healths').preload('crop')
       return response.json({
         success: true,
         message: 'Crop health records retrieved successfully',
@@ -23,7 +23,8 @@ export default class CropHealthController {
     try {
       const healthRecord = await CropHealth.query()
         .select('*')
-        .from('crop_health')
+        .from('crop_healths')
+        .preload('crop')
         .where('id', params.id)
         .first()
       if (healthRecord) {
