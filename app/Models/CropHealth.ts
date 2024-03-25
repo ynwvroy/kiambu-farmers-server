@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
-import Crop from 'App/Models/Crop'
+import Crop from 'App/Models/Crops'
 
 export default class CropHealth extends BaseModel {
   @column({ isPrimary: true })

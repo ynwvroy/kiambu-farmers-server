@@ -13,6 +13,9 @@ export default class LivestockProduction extends BaseModel {
   public date_recorded: Date
 
   @column()
+  public description: string
+
+  @column()
   public production_type: string
 
   @column()

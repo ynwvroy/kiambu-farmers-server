@@ -18,7 +18,7 @@ export default class Livestock extends BaseModel {
   public date_of_birth: string
 
   @column()
-  public sex: boolean
+  public sex: string
 
   @column()
   public color: string
