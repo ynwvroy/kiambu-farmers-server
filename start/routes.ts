@@ -114,32 +114,6 @@ Route.group(() => {
 
   /**
    * ============================================
-   * Promo codes
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/', 'PromoCodesController.index')
-    Route.post('/', 'PromoCodesController.store')
-    Route.get('/:id', 'PromoCodesController.show')
-    Route.put('/:id', 'PromoCodesController.update')
-    Route.delete('/:id', 'PromoCodesController.delete')
-  }).prefix('/promo-codes')
-
-  /**
-   * ============================================
-   * Contact queries
-   * ============================================
-   */
-  Route.group(() => {
-    Route.get('/', 'ContactController.index')
-    Route.post('/', 'ContactController.store')
-    Route.get('/:id', 'ContactController.show')
-    Route.put('/:id', 'ContactController.update')
-    Route.delete('/:id', 'ContactController.delete')
-  }).prefix('/contact-queries')
-
-  /**
-   * ============================================
    * Sales
    * ============================================
    */
