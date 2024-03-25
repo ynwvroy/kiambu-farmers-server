@@ -92,6 +92,18 @@ Route.group(() => {
 
   /**
    * ============================================
+   * Crops
+   * ============================================
+   */
+  Route.group(() => {
+    Route.get('/', 'CropsController.index')
+    Route.get('/:id', 'CropsController.show')
+    Route.put('/:id', 'CropsController.update')
+    Route.delete('/:id', 'CropsController.delete')
+  }).prefix('/crops')
+
+  /**
+   * ============================================
    * Sales
    * ============================================
    */
