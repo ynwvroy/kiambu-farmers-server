@@ -1,5 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Expense from 'App/Models/Expense'
+import Expense from 'App/Models/Expenses'
 
 export default class ExpensesController {
   public async index({ response }: HttpContextContract) {
