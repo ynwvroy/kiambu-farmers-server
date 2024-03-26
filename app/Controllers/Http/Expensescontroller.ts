@@ -19,6 +19,23 @@ export default class ExpensesController {
     }
   }
 
+  public async getFarmerExpenses({ params, response }: HttpContextContract) {
+    try {
+      const expenses = await Expense.query().where('farmer_id', params.id)
+      return response.json({
+        success: true,
+        message: 'Expense records retrieved successfully',
+        data: expenses,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
   public async show({ params, response }: HttpContextContract) {
     try {
       const expense = await Expense.query()

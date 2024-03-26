@@ -19,6 +19,23 @@ export default class LivestockController {
     }
   }
 
+  public async getSingleFarmerLivestock({ response }: HttpContextContract) {
+    try {
+      const livestock = await Livestock.query()
+      return response.json({
+        success: true,
+        message: 'Livestock retrieved successfully',
+        data: livestock,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
   public async show({ params, response }: HttpContextContract) {
     try {
       const livestockQuery = await Livestock.query()

@@ -1,6 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import CropHealth from '../../Models/CropHealth'
-
+import Crops from 'App/Models/Crops'
 export default class CropHealthController {
   public async index({ response }: HttpContextContract) {
     try {
@@ -10,6 +10,39 @@ export default class CropHealthController {
         message: 'Crop health records retrieved successfully',
         data: cropHealth,
       })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
+  public async getFarmerCropHealths({ params, response }: HttpContextContract) {
+    try {
+      // Fetch crops belonging to the farmer with farmer_id equal to params.id
+      const crops = await Crops.query().where('farmer_id', params.id)
+
+      // Extract the IDs of crops belonging to the farmer
+      const cropIds = crops.map((crop) => crop.id)
+
+      // Fetch crop health records for the identified crop IDs
+      const healthRecords = await CropHealth.query().preload('crop').whereIn('crop_id', cropIds)
+
+      if (healthRecords.length > 0) {
+        return response.json({
+          success: true,
+          message: 'Crop health records retrieved successfully',
+          data: healthRecords,
+        })
+      } else {
+        return response.json({
+          success: true,
+          message: 'No crop health records found for the farmer',
+          data: null,
+        })
+      }
     } catch (error) {
       return response.json({
         success: false,

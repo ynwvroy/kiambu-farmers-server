@@ -13,6 +13,7 @@ export default class Livestocks extends BaseSchema {
       table.string('sex').notNullable()
       table.string('color').notNullable()
       table.string('status').notNullable()
+      table.integer('farmer_id').unsigned().references('id').inTable('users')
       table.timestamps(true, true)
     })
   }

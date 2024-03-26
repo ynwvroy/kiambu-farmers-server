@@ -5,6 +5,7 @@ export default class LivestockSeeder extends BaseSeeder {
   public async run() {
     await Livestock.createMany([
       {
+        farmer_id: 1,
         name: 'Holstein Friesian Cow',
         type: 'Dairy',
         breed: 'Holstein Friesian',
@@ -14,6 +15,7 @@ export default class LivestockSeeder extends BaseSeeder {
         status: 'Active',
       },
       {
+        farmer_id: 4,
         name: 'Boer Goat',
         type: 'Meat',
         breed: 'Boer',
@@ -23,6 +25,7 @@ export default class LivestockSeeder extends BaseSeeder {
         status: 'Active',
       },
       {
+        farmer_id: 6,
         name: 'Rhode Island Red Chicken',
         type: 'Poultry',
         breed: 'Rhode Island Red',
@@ -32,6 +35,7 @@ export default class LivestockSeeder extends BaseSeeder {
         status: 'Active',
       },
       {
+        farmer_id: 8,
         name: 'Merino Sheep',
         type: 'Wool',
         breed: 'Merino',
@@ -41,6 +45,7 @@ export default class LivestockSeeder extends BaseSeeder {
         status: 'Active',
       },
       {
+        farmer_id: 10,
         name: 'Landrace Pig',
         type: 'Pork',
         breed: 'Landrace',
@@ -50,6 +55,7 @@ export default class LivestockSeeder extends BaseSeeder {
         status: 'Active',
       },
       {
+        farmer_id: 1,
         name: 'Buff Orpington Duck',
         type: 'Poultry',
         breed: 'Buff Orpington',
@@ -59,6 +65,7 @@ export default class LivestockSeeder extends BaseSeeder {
         status: 'Active',
       },
       {
+        farmer_id: 4,
         name: 'Alpaca',
         type: 'Fiber',
         breed: 'Huacaya',

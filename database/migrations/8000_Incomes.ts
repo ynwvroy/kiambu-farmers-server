@@ -9,6 +9,7 @@ export default class Incomes extends BaseSchema {
       table.float('amount').notNullable()
       table.string('description').notNullable()
       table.text('comments').nullable()
+      table.integer('farmer_id').unsigned().references('id').inTable('users')
       table.timestamps(true, true)
     })
   }

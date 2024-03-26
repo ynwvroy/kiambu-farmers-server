@@ -19,6 +19,23 @@ export default class IncomesController {
     }
   }
 
+  public async getFarmerIncomes({ params, response }: HttpContextContract) {
+    try {
+      const incomes = await Income.query().where('farmer_id', params.id)
+      return response.json({
+        success: true,
+        message: 'Income records retrieved successfully',
+        data: incomes,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
   public async show({ params, response }: HttpContextContract) {
     try {
       const income = await Income.query().select('*').from('incomes').where('id', params.id).first()

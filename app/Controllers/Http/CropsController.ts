@@ -19,6 +19,23 @@ export default class CropsController {
     }
   }
 
+  public async getSingleFarmerCrops({ params, response }: HttpContextContract) {
+    try {
+      const crops = await Crops.query().where('farmer_id', params.id)
+      return response.json({
+        success: true,
+        message: 'Crops retrieved successfully',
+        data: crops,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
   public async show({ params, response }: HttpContextContract) {
     try {
       const cropsQuery = await Crops.query()

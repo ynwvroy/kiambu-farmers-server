@@ -12,6 +12,7 @@ export default class Crops extends BaseSchema {
       table.string('harvest_date')
       table.integer('actual_yield')
       table.string('amount_profit')
+      table.integer('farmer_id').unsigned().references('id').inTable('users')
       table.text('comments')
       table.timestamps(true, true)
     })

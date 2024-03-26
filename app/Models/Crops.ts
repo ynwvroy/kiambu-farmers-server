@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import User from 'App/Models/User'
 
 export default class Crops extends BaseModel {
   @column({ isPrimary: true })
@@ -24,6 +25,9 @@ export default class Crops extends BaseModel {
   public amount_profit: string
 
   @column()
+  public farmer_id: number
+
+  @column()
   public comments: string
 
   @column.dateTime({ autoCreate: true })
@@ -31,4 +35,10 @@ export default class Crops extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  // Farmer relation
+  @belongsTo(() => User, {
+    foreignKey: 'farmer_id',
+  })
+  public farmer: BelongsTo<typeof User>
 }
