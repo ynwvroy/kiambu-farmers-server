@@ -120,7 +120,8 @@ Route.group(() => {
    * ============================================
    */
   Route.group(() => {
-    Route.get('/', 'LivestockController.index')
+    Route.get('', 'LivestockController.index')
+    Route.post('', 'LivestockController.store')
     Route.get('/:id', 'LivestockController.show')
     Route.put('/:id', 'LivestockController.update')
     Route.delete('/:id', 'LivestockController.delete')
