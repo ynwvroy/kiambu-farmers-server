@@ -10,7 +10,7 @@ export default class LivestockProduction extends BaseModel {
   public livestock_id: number
 
   @column()
-  public date_recorded: Date
+  public date_recorded: string
 
   @column()
   public description: string

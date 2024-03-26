@@ -12,10 +12,10 @@ export default class Crops extends BaseModel {
   public variety: string
 
   @column()
-  public planted_date: Date
+  public planted_date: string
 
   @column()
-  public harvest_date: Date
+  public harvest_date: string
 
   @column()
   public actual_yield: number

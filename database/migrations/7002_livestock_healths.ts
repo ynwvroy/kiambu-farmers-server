@@ -13,7 +13,7 @@ export default class LivestockHealth extends BaseSchema {
         .references('id')
         .inTable('livestocks')
         .onDelete('CASCADE')
-      table.dateTime('date_recorded').notNullable()
+      table.string('date_recorded').notNullable()
       table.string('description').notNullable()
       table.string('treatment')
       table.string('vaccination')

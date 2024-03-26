@@ -13,7 +13,7 @@ export default class LivestockProductions extends BaseSchema {
         .references('id')
         .inTable('livestocks')
         .onDelete('CASCADE')
-      table.dateTime('date_recorded').notNullable()
+      table.string('date_recorded').notNullable()
       table.string('description').notNullable()
       table.string('production_type').notNullable()
       table.float('quantity').notNullable()

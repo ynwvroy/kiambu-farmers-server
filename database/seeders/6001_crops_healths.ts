@@ -6,7 +6,7 @@ export default class CropHealthSeeder extends BaseSeeder {
     await CropHealth.createMany([
       {
         crop_id: 1,
-        date_recorded: new Date('2023-04-10'),
+        date_recorded: '2023-04-10',
         input_type: 'Fertilizer',
         quantity_applied: '50 kg',
         application_method: 'Broadcasting',
@@ -15,7 +15,7 @@ export default class CropHealthSeeder extends BaseSeeder {
       },
       {
         crop_id: 2,
-        date_recorded: new Date('2023-05-15'),
+        date_recorded: '2023-05-15',
         input_type: 'Pesticide',
         quantity_applied: '5 liters',
         application_method: 'Spraying',
@@ -24,7 +24,7 @@ export default class CropHealthSeeder extends BaseSeeder {
       },
       {
         crop_id: 3,
-        date_recorded: new Date('2023-07-20'),
+        date_recorded: '2023-07-20',
         input_type: 'Herbicide',
         quantity_applied: '3 liters',
         application_method: 'Spot spraying',
@@ -33,7 +33,7 @@ export default class CropHealthSeeder extends BaseSeeder {
       },
       {
         crop_id: 4,
-        date_recorded: new Date('2023-06-05'),
+        date_recorded: '2023-06-05',
         input_type: 'Fungicide',
         quantity_applied: '2 kg',
         application_method: 'Dusting',
@@ -42,7 +42,7 @@ export default class CropHealthSeeder extends BaseSeeder {
       },
       {
         crop_id: 5,
-        date_recorded: new Date('2023-08-25'),
+        date_recorded: '2023-08-25',
         input_type: 'Fertilizer',
         quantity_applied: '70 kg',
         application_method: 'Side dressing',
@@ -51,7 +51,7 @@ export default class CropHealthSeeder extends BaseSeeder {
       },
       {
         crop_id: 6,
-        date_recorded: new Date('2023-09-10'),
+        date_recorded: '2023-09-10',
         input_type: 'Pesticide',
         quantity_applied: '8 liters',
         application_method: 'Fogging',
@@ -60,7 +60,7 @@ export default class CropHealthSeeder extends BaseSeeder {
       },
       {
         crop_id: 7,
-        date_recorded: new Date('2023-05-20'),
+        date_recorded: '2023-05-20',
         input_type: 'Fungicide',
         quantity_applied: '3 kg',
         application_method: 'Spraying',

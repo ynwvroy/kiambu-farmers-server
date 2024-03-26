@@ -10,7 +10,7 @@ export default class CropHealth extends BaseModel {
   public crop_id: number
 
   @column()
-  public date_recorded: Date
+  public date_recorded: string
 
   @column()
   public input_type: string

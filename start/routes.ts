@@ -97,6 +97,7 @@ Route.group(() => {
    */
   Route.group(() => {
     Route.get('/', 'CropsController.index')
+    Route.post('/', 'CropsController.store')
     Route.get('/:id', 'CropsController.show')
     Route.put('/:id', 'CropsController.update')
     Route.delete('/:id', 'CropsController.delete')
@@ -109,6 +110,7 @@ Route.group(() => {
    */
   Route.group(() => {
     Route.get('/', 'CropHealthController.index')
+    Route.post('/', 'CropHealthController.store')
     Route.get('/:id', 'CropHealthController.show')
     Route.put('/:id', 'CropHealthController.update')
     Route.delete('/:id', 'CropHealthController.delete')
@@ -134,6 +136,7 @@ Route.group(() => {
    */
   Route.group(() => {
     Route.get('/', 'LivestockHealthController.index')
+    Route.post('/', 'LivestockHealthController.store')
     Route.get('/:id', 'LivestockHealthController.show')
     Route.put('/:id', 'LivestockHealthController.update')
     Route.delete('/:id', 'LivestockHealthController.delete')
@@ -146,6 +149,7 @@ Route.group(() => {
    */
   Route.group(() => {
     Route.get('/', 'LivestockProductionController.index')
+    Route.post('/', 'LivestockProductionController.store')
     Route.get('/:id', 'LivestockProductionController.show')
     Route.put('/:id', 'LivestockProductionController.update')
     Route.delete('/:id', 'LivestockProductionController.delete')

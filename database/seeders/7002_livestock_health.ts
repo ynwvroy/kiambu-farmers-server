@@ -6,7 +6,7 @@ export default class LivestockHealthSeeder extends BaseSeeder {
     await LivestockHealth.createMany([
       {
         livestock_id: 1,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Vaccinated against common diseases',
         treatment: 'Administered antibiotics for minor infection',
         vaccination: 'Yes',
@@ -15,7 +15,7 @@ export default class LivestockHealthSeeder extends BaseSeeder {
       },
       {
         livestock_id: 2,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Received routine check-up from veterinarian',
         treatment: 'Trimmed hooves and administered dewormer',
         vaccination: 'Yes',
@@ -24,7 +24,7 @@ export default class LivestockHealthSeeder extends BaseSeeder {
       },
       {
         livestock_id: 3,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Treated for respiratory infection',
         treatment: 'Prescribed antibiotics and monitored closely',
         vaccination: 'No',
@@ -33,7 +33,7 @@ export default class LivestockHealthSeeder extends BaseSeeder {
       },
       {
         livestock_id: 4,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Administered vitamins and supplements',
         treatment: 'Provided additional feed for weight gain',
         vaccination: 'No',
@@ -42,7 +42,7 @@ export default class LivestockHealthSeeder extends BaseSeeder {
       },
       {
         livestock_id: 5,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Received dental check-up and cleaning',
         treatment: 'Removed tartar buildup and addressed dental issues',
         vaccination: 'Yes',

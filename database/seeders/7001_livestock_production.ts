@@ -6,7 +6,7 @@ export default class LivestockProductionSeeder extends BaseSeeder {
     await LivestockProduction.createMany([
       {
         livestock_id: 1,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Livestock appears healthy and active',
         production_type: 'Milk',
         quantity: 20,
@@ -16,7 +16,7 @@ export default class LivestockProductionSeeder extends BaseSeeder {
       },
       {
         livestock_id: 2,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Livestock appears healthy and active',
         production_type: 'Meat',
         quantity: 5,
@@ -26,7 +26,7 @@ export default class LivestockProductionSeeder extends BaseSeeder {
       },
       {
         livestock_id: 3,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Livestock appears healthy and active',
         production_type: 'Eggs',
         quantity: 50,
@@ -36,7 +36,7 @@ export default class LivestockProductionSeeder extends BaseSeeder {
       },
       {
         livestock_id: 4,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Livestock appears healthy and active',
         production_type: 'Wool',
         quantity: 10,
@@ -46,7 +46,7 @@ export default class LivestockProductionSeeder extends BaseSeeder {
       },
       {
         livestock_id: 5,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Livestock appears healthy and active',
         production_type: 'Pork',
         quantity: 2,
@@ -56,7 +56,7 @@ export default class LivestockProductionSeeder extends BaseSeeder {
       },
       {
         livestock_id: 6,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Livestock appears healthy and active',
         production_type: 'Eggs',
         quantity: 30,
@@ -66,7 +66,7 @@ export default class LivestockProductionSeeder extends BaseSeeder {
       },
       {
         livestock_id: 7,
-        date_recorded: new Date('2023-01-10'),
+        date_recorded: '2023-01-10',
         description: 'Livestock appears healthy and active',
         production_type: 'Fiber',
         quantity: 5,

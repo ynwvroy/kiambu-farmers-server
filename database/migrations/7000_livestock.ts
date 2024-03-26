@@ -9,7 +9,7 @@ export default class Livestocks extends BaseSchema {
       table.string('name').notNullable()
       table.string('type').notNullable()
       table.string('breed').notNullable()
-      table.date('date_of_birth').notNullable()
+      table.string('date_of_birth').notNullable()
       table.string('sex').notNullable()
       table.string('color').notNullable()
       table.string('status').notNullable()
