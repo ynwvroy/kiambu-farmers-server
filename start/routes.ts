@@ -58,6 +58,32 @@ Route.group(() => {
 
   /**
    * ============================================
+   * Incomes
+   * ============================================
+   */
+  Route.group(() => {
+    Route.get('/', 'IncomesController.index')
+    Route.post('/', 'IncomesController.store')
+    Route.get('/:id', 'IncomesController.show')
+    Route.put('/:id', 'IncomesController.update')
+    Route.delete('/:id', 'IncomesController.delete')
+  }).prefix('/incomes')
+
+  /**
+   * ============================================
+   * Expenses
+   * ============================================
+   */
+  Route.group(() => {
+    Route.get('/', 'ExpensesController.index')
+    Route.post('/', 'ExpensesController.store')
+    Route.get('/:id', 'ExpensesController.show')
+    Route.put('/:id', 'ExpensesController.update')
+    Route.delete('/:id', 'ExpensesController.delete')
+  }).prefix('/expenses')
+
+  /**
+   * ============================================
    * Product List
    * ============================================
    */
